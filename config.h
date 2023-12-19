@@ -35,13 +35,13 @@ typedef struct {
 const char *spcmd1[] = { TERMINAL, "-n", "spterm", "-g", "101x34", NULL };
 const char *spcmd2[] = { TERMINAL, "-n", "spcalc", "-z", "20", "-g", "21x10", "-e", "bc", "-lq", NULL };
 const char *spcmd3[] = { TERMINAL, "-n", "spmusc", "-g", "71x35", "-e", "ncmpcpp", NULL };
-const char *spcmd4[] = { TERMINAL, "-n", "spcalr", "-z", "18", "-g", "21x10", "-e", "calendar", NULL };
+const char *spcmd4[] = { TERMINAL, "-n", "spytub", "-g", "101x34", "-e", "ytfzf", "-fls", "--type=all", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spcalc",      spcmd2},
 	{"spmusc",      spcmd3},
-	{"spcalr",       spcmd4},
+	{"spytub",      spcmd4},
 };
 
 /* tagging */
@@ -60,7 +60,7 @@ static const Rule rules[] = {
 	{ NULL,           "spterm",   NULL,            SPTAG(0),  1,          0,          -1,        -1 },
 	{ NULL,           "spcalc",   NULL,            SPTAG(1),  1,          0,          -1,        -1 },
 	{ NULL,           "spmusc",   NULL,            SPTAG(2),  1,          0,          -1,        -1 },
-	{ NULL,           "spcalr",   NULL,            SPTAG(3),  1,          0,          -1,        -1 },
+	{ NULL,           "spytub",   NULL,            SPTAG(3),  1,          0,          -1,        -1 },
 	{ NULL,           NULL,       "Event Tester",  0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -122,6 +122,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,              spawn,          {.v = (const char*[]){ "mpc", "prev", NULL } } },
 	{ MODKEY|ShiftMask,             XK_p,              spawn,          {.v = (const char*[]){ "mpc", "seek", "0%", NULL } } },
 	{ MODKEY,                       XK_n,              spawn,          {.v = (const char*[]){ "mpc", "next", NULL } } },
+	{ MODKEY|ShiftMask,             XK_n,              spawn,          {.v = (const char*[]){ "clipmenu", NULL } } },
 	{ MODKEY|ShiftMask,             XK_a,              spawn,          {.v = (const char*[]){ TERMINAL, "-e", "pulsemixer", NULL } } },
 	{ MODKEY,                       XK_grave,          spawn,          {.v = (const char*[]){ TERMINAL, "-e", "cava", NULL } } },
 	{ MODKEY,                       XK_i,              spawn,          {.v = (const char*[]){ "firefox", NULL } } },
@@ -136,12 +137,13 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return,         togglescratch,  {.ui = 0 } },
 	{ MODKEY,                       XK_apostrophe,     togglescratch,  {.ui = 1 } },
 	{ MODKEY,                       XK_m,              togglescratch,  {.ui = 2 } },
-	{ MODKEY,                       XK_c,              togglescratch,  {.ui = 3 } },
+	{ MODKEY|ShiftMask,             XK_grave,          togglescratch,  {.ui = 3 } },
 	{ MODKEY,                       XK_minus,          setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,          setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,          setgaps,        {.i = 0  } },
 	{ MODKEY,                       XK_space,          spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,         spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_BackSpace,      spawn,          {.v = (const char*[]){ "uxterm", NULL } } },
 	{ MODKEY,                       XK_Tab,            view,           {0} },
 	{ MODKEY,                       XK_0,              view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,              tag,            {.ui = ~0 } },
