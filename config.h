@@ -54,7 +54,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "qutebrowser",  NULL,       NULL,            1 << 1,    0,          0,          -1,        -1 },
+	{ "chromium",  NULL,       NULL,            1 << 1,    0,          0,          -1,        -1 },
 	{ "firefox",      NULL,       NULL,            1 << 1,    0,          0,          -1,        -1 },
 	{ "Gimp",         NULL,       NULL,            1 << 5,    1,          0,          -1,        -1 },
 	{ "St",           NULL,       NULL,            0,         0,          1,           0,        -1 },
@@ -127,7 +127,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_a,              spawn,          {.v = (const char*[]){ TERMINAL, "-e", "pulsemixer", NULL } } },
 	{ MODKEY,                       XK_grave,          spawn,          {.v = (const char*[]){ TERMINAL, "-e", "cava", NULL } } },
 	{ MODKEY,                       XK_i,              spawn,          {.v = (const char*[]){ "firefox", NULL } } },
-	{ MODKEY|ShiftMask,             XK_i,              spawn,          {.v = (const char*[]){ "qutebrowser", NULL } } },
+	{ MODKEY|ShiftMask,             XK_i,              spawn,          {.v = (const char*[]){ "chromium", NULL } } },
 	{ MODKEY|ShiftMask,             XK_m,              spawn,          {.v = (const char*[]){ "emog", NULL } } },
 /*	{ MODKEY,                       XK_F12,            spawn,          {.v = (const char*[]){"sudo", "brightnessctl", "s", "+5%", NULL } } },
 	{ MODKEY,                       XK_F11,            spawn,          {.v = (const char*[]){"sudo", "brightnessctl", "s", "5%-", NULL } } },*/
